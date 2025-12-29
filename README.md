@@ -52,16 +52,18 @@ my_problem/
 ```
 
 ```judge.json```的内容
+
+其中```nodes```为测试点列表，可以直接输入数据或从文件读取。
 ```json
 {
-    "name": "雷霆题目", // 题目名
-    "program": "my_program", // 提交的程序名，不加.py
-    "nodes": [ // 测试点列表
-    { // 直接输入
+    "name": "雷霆题目",
+    "program": "my_program",
+    "nodes": [
+    {
       "input": "7\n16\n5\n5",
-      "ans": "48804" // 不留末尾空行，每行结尾若无必要不留空格
+      "ans": "48804"
     },
-    { // 从.in和.out文件读取
+    {
       "file": {
           "input": "2.in",
           "ans": "2.ans"
