@@ -1,0 +1,4 @@
+debug: True
+default-time-limit: 1000
+display:
+  nodes-max-cols: 10
