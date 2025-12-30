@@ -5,6 +5,7 @@ from tqdm import tqdm
 import subprocess
 import threading
 import sys
+import os
 
 STATE_NAMES = [
     "AC",
@@ -157,7 +158,7 @@ def judge_single(program_path:str, judge_in:str, judge_ans:str, time_limit:int, 
         # raise RuntimeError(f"Error while judging program: {str(e)}")
         return 1, f"Error while judging program: \"{str(e)}\""
 
-def judge_multi(program_path:str, config:dict, show_process:bool) -> dict:
+def judge_multi(program_path:str, config:dict, show_process:bool, wkdir:str) -> dict:
     result = {
         'states': [],
         'messages': []
@@ -169,7 +170,7 @@ def judge_multi(program_path:str, config:dict, show_process:bool) -> dict:
         time_limit = global_config['default-time-limit'] if 'time-limit' not in node else node['time-limit']
         if 'file' in node:
             try:
-                node['input'] = load_text(node['file']['input'])
+                node['input'] = load_text(os.path.join(wkdir, node['file']['input']))
             except Exception as e:
                 error_msg = f"Failed to load input file: {node['file']['input']}"
                 logger.error(error_msg)
@@ -178,7 +179,7 @@ def judge_multi(program_path:str, config:dict, show_process:bool) -> dict:
                 result['messages'].append(error_msg)
                 continue
             try:
-                node['ans'] = load_text(node['file']['ans'])
+                node['ans'] = load_text(os.path.join(wkdir, node['file']['ans']))
             except Exception as e:
                 error_msg = f"Failed to load answer file: {node['file']['ans']}"
                 logger.error(error_msg)
@@ -193,9 +194,9 @@ def judge_multi(program_path:str, config:dict, show_process:bool) -> dict:
     if show_process: pbar.close()
     return result
 
-def quick_judge(program_path:str, config_path:str) -> dict:
+def quick_judge(program_path:str, config_path:str, wkdir:str) -> dict:
     config = load_json(config_path)
-    return judge_multi(program_path, config , True)
+    return judge_multi(program_path, config , True, wkdir)
 
 def display_judge_result(result:dict, node_nums:int, config:dict) -> None:
     states = result['states']

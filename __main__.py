@@ -20,5 +20,5 @@ if argv[1].lower() != "-f":
     if not os.path.exists(program_path):
         logger.error(f"被试程序不存在: {program_path}")
 
-    result = quick_judge(program_path, config_path)
+    result = quick_judge(program_path, config_path, argv[1])
     display_judge_result(result, len(config['nodes']), config)
