@@ -1,0 +1,54 @@
+{
+    "name": "B-数绵羊",
+    "program": "B",
+    "nodes": [
+        {
+            "file": {
+                "input": "data/1.in",
+                "ans": "data/1.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/2.in",
+                "ans": "data/2.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/3.in",
+                "ans": "data/3.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/4.in",
+                "ans": "data/4.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/5.in",
+                "ans": "data/5.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/6.in",
+                "ans": "data/6.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/7.in",
+                "ans": "data/7.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/8.in",
+                "ans": "data/8.ans"
+            }
+        }
+    ]
+}

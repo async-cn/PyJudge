@@ -1,11 +1,13 @@
+import os
+import sys
+import threading
+import subprocess
+
+from tqdm import tqdm
+from prettytable import PrettyTable, SINGLE_BORDER
+
 from .config import load_json, load_text, read_global_config
 from .logger import Logger
-from prettytable import PrettyTable, SINGLE_BORDER
-from tqdm import tqdm
-import subprocess
-import threading
-import sys
-import os
 
 STATE_NAMES = [
     "AC",
@@ -24,9 +26,9 @@ NONE_COLOR:str = "\033[0;0m"
 global_config:dict = read_global_config()
 logger = Logger("Judger")
 
-def judge_single(program_path:str, judge_in:str, judge_ans:str, time_limit:int, anstype) -> (int, str):
+def judge_single(program_path, judge_in, judge_ans, time_limit, anstype):
     """
-    执行并评测Python程序
+    执行并评测单个Python程序
 
     参数:
         program_path: Python程序文件路径
@@ -138,16 +140,15 @@ def judge_single(program_path:str, judge_in:str, judge_ans:str, time_limit:int, 
             min_len = min(len(output), len(judge_ans))
             for i in range(min_len):
                 if output[i] != judge_ans[i]:
-                    return 2, f"Wrong Answer: At char #{i+1}, expected \"{judge_ans[i]}\", got \"{output[i]}\""
+                    return 2, f"Wrong Answer: \
+                    At char #{i+1}, expected \"{judge_ans[i]}\", got \"{output[i]}\""
             if len(output) > len(judge_ans):
                 return 2, "Wrong Answer: Output too long"
-            else:  # len(output) < len(judge_ans)
-                return 2, "Wrong Answer: Output too short"
-        else:
-            if output == judge_ans:
-                return 0, "OK"
-            else:
-                return 2, "Wrong Answer"
+            # len(output) < len(judge_ans)
+            return 2, "Wrong Answer: Output too short"
+        if output == judge_ans:
+            return 0, "OK"
+        return 2, "Wrong Answer"
 
     except FileNotFoundError:
         # 如果程序文件不存在
@@ -158,7 +159,15 @@ def judge_single(program_path:str, judge_in:str, judge_ans:str, time_limit:int, 
         # raise RuntimeError(f"Error while judging program: {str(e)}")
         return 1, f"Error while judging program: \"{str(e)}\""
 
-def judge_multi(program_path:str, config:dict, show_process:bool, wkdir:str) -> dict:
+def judge_multi(program_path, config, show_process, wkdir) -> dict:
+    """
+    单个程序评测多个测试点
+    :param program_path: Python程序路径
+    :param config: 测试点配置
+    :param show_process: 显示评测进度
+    :param wkdir: 工作目录
+    :return: 评测结果
+    """
     result = {
         'states': [],
         'messages': []
@@ -190,15 +199,31 @@ def judge_multi(program_path:str, config:dict, show_process:bool, wkdir:str) -> 
         state, msg = judge_single(program_path, node['input'], node['ans'], time_limit, str if not 'anstype' in node else eval(node['anstype']))
         result['states'].append(state)
         result['messages'].append(msg)
-        if show_process: pbar.update(1)
-    if show_process: pbar.close()
+        if show_process:
+            pbar.update(1)
+    if show_process:
+        pbar.close()
     return result
 
-def quick_judge(program_path:str, config_path:str, wkdir:str) -> dict:
+def quick_judge(program_path, config_path, wkdir) -> dict:
+    """
+    快速评测程序
+    :param program_path: 程序路径
+    :param config_path: 测试点配置文件路径
+    :param wkdir: 工作目录
+    :return: 评测结果
+    """
     config = load_json(config_path)
     return judge_multi(program_path, config , True, wkdir)
 
-def display_judge_result(result:dict, node_nums:int, config:dict) -> None:
+def display_judge_result(result:dict, node_nums, config) -> None:
+    """
+    显示评测结果
+    :param result: 评测结果
+    :param node_nums: 测试点数量
+    :param config: 测试点配置
+    :return: 无
+    """
     states = result['states']
     messages = result['messages']
     maxw = global_config['display']['nodes-max-cols']

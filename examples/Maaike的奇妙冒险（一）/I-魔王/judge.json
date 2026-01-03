@@ -1,0 +1,126 @@
+{
+    "name": "I-魔王",
+    "program": "I",
+    "nodes": [
+        {
+            "file": {
+                "input": "data/1.in",
+                "ans": "data/1.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/2.in",
+                "ans": "data/2.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/3.in",
+                "ans": "data/3.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/4.in",
+                "ans": "data/4.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/5.in",
+                "ans": "data/5.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/6.in",
+                "ans": "data/6.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/7.in",
+                "ans": "data/7.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/8.in",
+                "ans": "data/8.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/9.in",
+                "ans": "data/9.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/10.in",
+                "ans": "data/10.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/11.in",
+                "ans": "data/11.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/12.in",
+                "ans": "data/12.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/13.in",
+                "ans": "data/13.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/14.in",
+                "ans": "data/14.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/15.in",
+                "ans": "data/15.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/16.in",
+                "ans": "data/16.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/17.in",
+                "ans": "data/17.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/18.in",
+                "ans": "data/18.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/19.in",
+                "ans": "data/19.ans"
+            }
+        },
+        {
+            "file": {
+                "input": "data/20.in",
+                "ans": "data/20.ans"
+            }
+        }
+    ]
+}

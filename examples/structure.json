@@ -1,0 +1,21 @@
+{
+    "name": "题单名称", // 题单名称
+    "description": "# 题单名称\n本题单共包含 xxx 个题，旨在 $\\cdots$。通过完成以下题目，你可以做到：\n1. 掌握...\n$\\cdots$", // 题单描述，使用Markdown格式
+    "problems_num": 4, // 题目数量
+    "problems": [
+        {
+            "desc": "# A 第一个题目\n\n第一个题目 $\\cdots$", // 题目描述，使用Markdown格式，注意使用转义
+            "solution": "解题思路 $\\cdots$", // 核心解题思路，简要易懂
+            "data": {
+                "tester_nodes_num": 4, // 测试点数量
+                "input_generator": "N = [5, 100, 2000, 50000]\nt = int(input())\nprint(N[t])", // 测试输入生成器，使用Python编写，每次从输入流读取测试点编号（从0开始编号），输出测试数据，数据范围应与描述的数据范围一致
+                "ans_generator": "n = int(input())\nfor i in range(n):\n    print(\"Hello, World!\")" // 测试答案生成器，使用Python编写，每次从输入流读取测试数据，输出答案
+            }
+        },{
+            // 第二个题目题的内容
+        },
+        {
+            // 其他题目的内容，仿照上例
+        }
+    ]
+}
