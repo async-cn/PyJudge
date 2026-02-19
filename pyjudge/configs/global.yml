@@ -1,4 +1,5 @@
-debug: True
+debug: true
 default-time-limit: 1000
 display:
   nodes-max-cols: 10
+  pbar: true

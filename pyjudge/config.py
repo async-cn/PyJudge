@@ -7,7 +7,6 @@
 """
 import os
 import json
-
 import yaml
 
 def load(path:str) -> dict:
@@ -43,7 +42,19 @@ def read_global_config() -> dict:
     :return: 全局配置
     """
     script_dir = os.path.dirname(__file__)
-    return load(os.path.join(script_dir, 'configs/global.yml'))
+    return load(os.path.join(script_dir, 'configs', 'global.yml'))
+
+def set_pbar_display(pbar_display:bool) -> None:
+    """
+    修改进度条显示
+    :return:
+    """
+    current_config = read_global_config()
+    global_config_path = os.path.join(os.path.dirname(__file__), 'configs', 'global.yml')
+    current_config['display']['pbar'] = pbar_display
+    with open(global_config_path, 'w', encoding='utf-8') as f:
+        yaml.dump(current_config, f, allow_unicode=True)
+    print("Modified:", current_config['display']['pbar'])
 
 if __name__ == "__main__":
     print(read_global_config())

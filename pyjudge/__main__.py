@@ -1,4 +1,4 @@
-from .config import load_json
+from .config import load_json, set_pbar_display, read_global_config
 from .judge import quick_judge, display_judge_result
 from .logger import Logger
 from sys import argv, exit
@@ -6,7 +6,17 @@ import os
 
 logger = Logger("Main")
 
-if argv[1].lower() != "-f":
+if argv[1].lower() == "-f":
+    pass
+elif argv[1].lower() == "-pbar":
+    if argv[2].lower() == "set":
+        pbar = True if argv[3].lower() == "true" else False
+        set_pbar_display(pbar)
+        print("进度条显示修改成功:", "True" if pbar else "False")
+    elif argv[2].lower() == "check":
+        global_config = read_global_config()
+        print("进度条显示:", global_config["display"]["pbar"])
+else:
     if not os.path.exists(argv[1]):
         logger.error(f"路径不存在: {argv[1]}")
         exit(0)

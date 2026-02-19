@@ -214,7 +214,7 @@ def quick_judge(program_path, config_path, wkdir) -> dict:
     :return: 评测结果
     """
     config = load_json(config_path)
-    return judge_multi(program_path, config , True, wkdir)
+    return judge_multi(program_path, config , global_config['display']['pbar'], wkdir)
 
 def display_judge_result(result:dict, node_nums, config) -> None:
     """
