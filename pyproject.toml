@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "PyJudge"
+name = "pyjudge"
 version = "0.1.0"
 description = "一个有点好用的Python评测机"
 readme = "README.md"
@@ -24,6 +24,9 @@ dependencies = [
 
 [tool.setuptools.packages.find]
 exclude = ["examples", "gallery", "importer"]
+
+[tool.setuptools.package-data]
+pyjudge = ["**/*.yml"]
 
 [project.urls]
 Homepage = "http://www.oasismc.cc"
