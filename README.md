@@ -3,9 +3,9 @@
 ![](https://img.shields.io/badge/Version-Beta-green)
 ![](https://img.shields.io/badge/Python%20version-Python%203.x-blue)
 
-一款有点好用的 Python 判题机。
+一款有点好用的 Python 评测机。
 
-支持自定义测试点输入输出和时间限制、详细调试信息显示，并根据程序的表现统计得分。
+支持自定义测试点输入输出和时间限制、详细调试信息显示等基本功能，并根据程序评测结果统计得分。
 
 ## 开始使用
 ### 环境需求：
@@ -45,7 +45,7 @@ my_problem/
 其中```nodes```为测试点列表，可以直接输入数据或从文件读取。
 ```json
 {
-    "name": "雷霆题目",
+    "name": "我的题目",
     "program": "my_program",
     "nodes": [
     {
