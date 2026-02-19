@@ -19,7 +19,7 @@ cd PyJudge
 ```
 安装项目
 ```shell
-pip install dist/pyjudge.whl
+pip install dist/pyjudge-0.1.0-py3-none-any.whl
 ```
 ## 使用方法
 ### 终端运行（推荐）
