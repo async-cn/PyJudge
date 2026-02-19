@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PyJudge"
+version = "0.1.0"
+description = "一个有点好用的Python评测机"
+readme = "README.md"
+authors = [
+    {name = "AsyncioCN", email = "oasismc@qq.com"}
+]
+license = "MIT"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.6"
+dependencies = [
+    "pyyaml",
+    "prettytable",
+    "tqdm"
+]
+
+[tool.setuptools.packages.find]
+exclude = ["examples", "gallery", "importer"]
+
+[project.urls]
+Homepage = "http://www.oasismc.cc"
